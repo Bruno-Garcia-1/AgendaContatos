@@ -1,18 +1,16 @@
 <?php
 
+use App\Http\Controllers\PersonController;
+use App\Http\Controllers\AddressController;
+use App\Http\Controllers\PhoneController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home.index');
 });
+
+Route::get('/pessoa',   [PersonController::class,   'index'])->name('person.index');
+Route::get('/endereco', [AddressController::class,  'index'])->name('address.index');
+Route::get('/telefone', [PhoneController::class,    'index'])->name('phone.index');
+
