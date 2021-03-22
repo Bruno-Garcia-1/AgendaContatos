@@ -1,4 +1,7 @@
-<!-- JS Bootstrap 5.0.0-beta2 -->
+<!-- Bootstrap Popper v2.6.0 -->
+<script src="{{ asset('/libs/bootstrap-5.0.0-beta2/js/popper.min.js') }}" type="text/javascript"></script>
+
+<!-- Bootstrap 5.0.0-beta2 -->
 <script src="{{ asset('/libs/bootstrap-5.0.0-beta2/js/bootstrap.js') }}"></script>
 
 <!-- jQuery 3.6.0 -->
@@ -9,4 +12,6 @@
 <script src="{{ asset('/js/mask.js') }}" type="text/javascript"></script>
 
 <!-- Ajax Script -->
-<script src="{{ asset('/js/ajax.js') }}" type="text/javascript"></script>
+<script src="{{ asset('/js/person_ajax.js') }}" type="text/javascript"></script>
+<script src="{{ asset('/js/address_ajax.js') }}" type="text/javascript"></script>
+<script src="{{ asset('/js/phone_ajax.js') }}" type="text/javascript"></script>

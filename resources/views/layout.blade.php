@@ -5,9 +5,10 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Declaração de quitação - Unimed</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>Agenda de Contatos</title>
 
-    <link sizes="60x60" rel="shortcut icon" href="{{ asset('imgs/favicon.png') }}" type="image/x-icon"/>
+<!--  <link sizes="60x60" rel="shortcut icon" href="{{ asset('imgs/logo.png') }}" type="image/x-icon"/> -->
 
     <!-- CSS Bootstrap 5.0.0-beta2 -->
     <link rel="stylesheet" href="{{ asset('/libs/bootstrap-5.0.0-beta2/css/bootstrap.css') }}">
@@ -41,14 +42,21 @@
         }
         footer{
             background-color: #000106;
-            height: 80px;
+            height: 40px;
             color: #5B5B5B;
         }
         a{
             text-decoration: none;
             color: #6c757d;
         }
-
+        .personRow{
+            cursor: pointer;
+        }.personRow:hover{
+            color: white;
+            background-color: #5B5B5B;
+            border-style: solid;
+            border-color: #323131;
+                 }
         .color1{
             background-color: #4f5050!important;
         }
@@ -73,7 +81,7 @@
 <body>
 
 <header class="col-12 text-center mt-3">
-    <img id="banner" src="{{ asset('imgs/logo.png') }}" alt="K13 Agência Web">
+<!--  <img id="banner" src="{{ asset('imgs/logo.png') }}" alt="K13 Agência Web"> -->
 </header>
 
 <div class="container-sm">
@@ -85,7 +93,7 @@
     </div>
 
     <div class="row">
-        <div id="content" class="col-12">
+        <div id="content" class="col-12 p-4">
             @yield('content')
         </div>
     </div>

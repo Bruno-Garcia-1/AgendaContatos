@@ -22,8 +22,8 @@ class CreatePhonesTable extends Migration
 
             $table->foreignId('person_id')->constrained('persons');
 
-            $table->date('created_at');
-            $table->date('updated_at');
+            $table->dateTime('created_at');
+            $table->dateTime('updated_at');
         });
     }
 

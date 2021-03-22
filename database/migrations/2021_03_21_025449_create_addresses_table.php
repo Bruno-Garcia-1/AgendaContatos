@@ -17,14 +17,15 @@ class CreateAddressesTable extends Migration
             $table->id();
             $table->string('zipCode',8);
             $table->string('street',70);
+            $table->string('number',10);
             $table->string('neighborhood',70);
             $table->string('city',70);
             $table->string('state',20);
 
             $table->foreignId('person_id')->constrained('persons');
 
-            $table->date('created_at');
-            $table->date('updated_at');
+            $table->dateTime('created_at');
+            $table->dateTime('updated_at');
         });
     }
 
