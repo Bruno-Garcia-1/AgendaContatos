@@ -1,6 +1,14 @@
 $("#formPhone").submit(function (e)
 {
     e.preventDefault();
+    console.log($("#cellPhone").val());
+    console.log($("#homePhone").val());
+    console.log($("#commercialPhone").val());
+    if ($("#cellPhone").val() === '' || $("#homePhone").val() === '' || $("#commercialPhone").val() === '')
+    {
+        alertDiv('danger','Preencha os campos obrigatórios',3000);
+        return;
+    }
 
     $.ajax({
         url: $(this).attr("action"),

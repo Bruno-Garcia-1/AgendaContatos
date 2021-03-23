@@ -24,7 +24,7 @@
     <div class="row mb-3">
         <div class="col-md-3">
             <label for="cellPhone" class="form-label">Telefone Celular</label>
-            <input name="cellPhone" type="text" class="form-control cellPhone" id="cellPhone" placeholder="(00)0 0000-0000">
+            <input name="cellPhone" type="text" class="form-control cellPhone" id="cellPhone" placeholder="(00)0 0000-0000" required>
         </div>
     </div>
 

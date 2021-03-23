@@ -8,73 +8,13 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Agenda de Contatos</title>
 
-  <!--  <link sizes="60x60" rel="shortcut icon" href="{{ asset('imgs/logo.png') }}" type="image/x-icon"/> -->
+    <link sizes="60x60" rel="shortcut icon" href="{{ asset('imgs/logo.png') }}" type="image/x-icon"/>
 
     <!-- CSS Bootstrap 5.0.0-beta2 -->
     <link rel="stylesheet" href="{{ asset('/libs/bootstrap-5.0.0-beta2/css/bootstrap.css') }}">
+    <!-- CSS Customization -->
+    <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
 
-    <style type="text/css">
-        body{
-            background-color: #000106;
-        }
-        header{
-            background-color: #000106;
-            height: 100px;
-        }
-        #banner{
-            max-height: 300px;
-        }
-        nav{
-            color: #ffffff;
-            cursor: pointer;
-            text-decoration: none;
-            text-transform: uppercase;
-            font-family: inherit;
-        }
-        #menu:hover{
-            color: #868686;
-            background-color: #2B2B2B;
-                 }
-        #content{
-            background-color: #FFFFFF;
-            height: auto;
-            border-radius: 30px;
-        }
-        footer{
-            background-color: #000106;
-            height: 40px;
-            color: #5B5B5B;
-        }
-        a{
-            text-decoration: none;
-            color: #6c757d;
-        }
-        .personRow{
-            cursor: pointer;
-
-        }.personRow:hover{
-            color: white;
-            background-color: #5B5B5B;
-            border-style: solid;
-            border-color: #323131;
-                 }
-         .card-header{
-             cursor: pointer;
-             background-color: #A7A9AC;
-         }
-        .card-body{
-            background-color: #c2c7ca;
-        }
-
-        @media screen and (max-width: 576px) {
-            header{
-                height: 80px;
-            }
-            footer{
-                font-size: 15px;
-            }
-        }
-    </style>
 </head>
 
 <body>

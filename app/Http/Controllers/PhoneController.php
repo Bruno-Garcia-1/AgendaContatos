@@ -7,10 +7,6 @@ use Illuminate\Http\Request;
 
 class PhoneController extends Controller
 {
-    private static function update(Request $request)
-    {
-        return $request;
-    }
 
     public function index()
     {
