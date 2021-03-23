@@ -8,7 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Agenda de Contatos</title>
 
-    <link sizes="60x60" rel="shortcut icon" href="{{ asset('imgs/logo.png') }}" type="image/x-icon"/>
+  <!--  <link sizes="60x60" rel="shortcut icon" href="{{ asset('imgs/logo.png') }}" type="image/x-icon"/> -->
 
     <!-- CSS Bootstrap 5.0.0-beta2 -->
     <link rel="stylesheet" href="{{ asset('/libs/bootstrap-5.0.0-beta2/css/bootstrap.css') }}">
@@ -58,6 +58,13 @@
             border-style: solid;
             border-color: #323131;
                  }
+         .card-header{
+             cursor: pointer;
+             background-color: #A7A9AC;
+         }
+        .card-body{
+            background-color: #c2c7ca;
+        }
 
         @media screen and (max-width: 576px) {
             header{

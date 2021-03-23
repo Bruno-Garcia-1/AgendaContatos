@@ -24,7 +24,6 @@ $("#cpf").focusout(function ()
         }
     });
 });
-
 $("#formPerson").submit(function (e)
 {
     e.preventDefault();
@@ -37,18 +36,13 @@ $("#formPerson").submit(function (e)
     }).done(function (response) {
         if (response){
             console.log(response);
-            alert('Dados Salvos com sucesso!')
-            $('#formPerson').each(function()
-            {
-                this.reset();
-            });
+            alertDiv('success','Pessoa registrada com sucesso!',2000);
         }else{
             console.log(response);
-            alert('Falha ao gravar dados!')
+            alertDiv('success','ATENÇÃO: Ocorreu uma falha ao gravar os dados, contate o administrador do sistema.',5000);
         }
     });
 });
-
 $("#modalName").on('input',function ()
 {
     if($(this).val().length < 2) return;
@@ -73,28 +67,90 @@ $("#modalName").on('input',function ()
 
                 $("#gridPerson").append
                 (
-                    "<p class='personRow' onclick='loadPersonRow(" + p.id + ")'>" +
-                        p.name +
-                    "</p>"
+                    '<div class="card col-sm-12 mb-1">\n' +
+                    '   <div class="row card-header text-center" onclick="setForm('+ p.personID +')">\n' +
+                    '        <h5>'+ p.name +'</h5>\n' +
+                    '   </div>' +
+                    '</div>'
                 );
             })
         }
     });
 });
 
-
-function loadPersonRow(id){
+function setForm(personID)
+{
+    clearElement('form');
+    clearElement('alert');
+    clearElement('update');
 
     console.log(personList);
 
     personList.forEach(function (p){
-        if (p.id === id)
+        if (p.personID === personID)
         {
             $("#personName").val(p.name);
-            $("#personId").val(p.id);
-            $("#update").val(false);
+            $("#personId").val(p.personID);
+
+            let screen = $("#screen").val();
+
+            if (screen === 'address' && p.addressID)
+            {
+                alertDiv('primary','ATENÇÃO: Esta pessoa já possui um edereço cadastrado, ao prosseguir o registro será atualizado.');
+                $("#update").val(true);
+                $("#personId").val(p.personID);
+                $("#addressId").val(p.addressID);
+                $("#zipCode").val(p.zipCode);
+                $("#street").val(p.street);
+                $("#number").val(p.number);
+                $("#neighborhood").val(p.neighborhood);
+                $("#city").val(p.city);
+                $("#state").val(p.state);
+            }
+            if (screen === 'phone' && p.phoneID)
+            {
+                alertDiv('primary','ATENÇÃO: Esta pessoa já possui um telefone, ao prosseguir o registro será atualizado.');
+                $("#update").val(true);
+                $("#personId").val(p.personID);
+                $("#phoneId").val(p.phoneID);
+                $("#cellPhone").val(p.cellPhone);
+                $("#homePhone").val(p.homePhone);
+                $("#commercialPhone").val(p.commercialPhone);
+            }
+
+
         }
     });
+}
+function clearElement(element)
+{
+    switch (element)
+    {
+        case 'form':
+            $('form').each(function()
+            {
+                this.reset();
+            });
+            break;
+        case 'alert':
+            $("#alert").text('');
+            break;
+        case 'update':
+            $("#update").val('');
+            break;
+        default:
+            return;
+    }
+}
+function alertDiv(type, msg, time)
+{
+    $("#alert").append('<div class="alert alert-' + type + '" role="alert">' + msg + '</div>');
 
+    if (time)
+    {
+        setTimeout(function(){
+            $("#alert").fadeOut();
+        }, time);
+    }
 }
 

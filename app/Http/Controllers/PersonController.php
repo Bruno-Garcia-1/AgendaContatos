@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\DB;
 
 class PersonController extends Controller
 {
+    private static function update(Request $request)
+    {
+        return $request;
+    }
+
     public function index()
     {
         return view('person.index');
@@ -50,7 +55,6 @@ class PersonController extends Controller
     {
         $cpf = json_decode(self::cpfCheck($request->cpf));
 
-
         $person = new Person;
 
         $person->name       = $request->name;
@@ -73,9 +77,9 @@ class PersonController extends Controller
 
         $sql = "
 SELECT
-	p.name,    p.cpf,    p.email,    p.birthDate,
-    ad.zipCode,    ad.street,    ad.number,    ad.neighborhood,    ad.city,    ad.state,
-    ph.cellPhone,    ph.homePhone,    ph.commercialPhone
+	p.id AS personID,   p.name,    p.cpf,    p.email,    p.birthDate,
+    ad.id AS addressID,  ad.zipCode,    ad.street,    ad.number,    ad.neighborhood,    ad.city,    ad.state,
+    ph.id AS phoneID,  ph.cellPhone,    ph.homePhone,    ph.commercialPhone
 FROM
 	persons AS p
     LEFT JOIN addresses AS ad ON ad.person_id = p.id

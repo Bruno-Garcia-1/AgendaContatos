@@ -16,7 +16,8 @@ $("#zipCode").focusout(function ()
     });
 });
 
-$("#formAddress").submit(function (e) {
+$("#formAddress").submit(function (e)
+{
     e.preventDefault();
 
     $.ajax({
@@ -26,15 +27,14 @@ $("#formAddress").submit(function (e) {
         dataType: 'json',
     }).done(function (response) {
         if (response){
-            console.log(response);
-            alert('Dados Salvos com sucesso!')
+            alertDiv('success','Endereço registrado com sucesso!',2000);
             $('#formAddress').each(function()
             {
                 this.reset();
             });
         }else{
             console.log(response);
-            alert('Falha ao gravar dados!')
+            alertDiv('success','ATENÇÃO: Ocorreu uma falha ao gravar os dados, contate o administrador do sistema.',5000);
         }
 
 
@@ -42,5 +42,4 @@ $("#formAddress").submit(function (e) {
 
 });
 
-//$('#nome').focus();
 

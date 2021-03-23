@@ -19,17 +19,17 @@ class PhoneController extends Controller
 
     public function save(Request $request)
     {
-        if($request->update === true)
+        if($request->update == 'true')
         {
-            $res = self::update($request);
-            dd($res);
+            $phone = Phone::find($request->phoneId);
+        }else{
+            $phone = new Phone;
         }
 
         $cellPhone       = preg_replace( '/[^0-9]/is', '', $request->cellPhone);
         $homePhone       = preg_replace( '/[^0-9]/is', '', $request->homePhone);
         $commercialPhone = preg_replace( '/[^0-9]/is', '', $request->commercialPhone);
 
-        $phone = new Phone;
 
         $phone->cellPhone       = $cellPhone;
         $phone->homePhone       = $homePhone;

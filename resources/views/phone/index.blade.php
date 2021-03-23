@@ -1,8 +1,13 @@
 @extends('layout')
 @section('content')
-<div class="row">
-    <h1 class="display-6">Cadastrar Telefone</h1>
-</div>
+    <div class="row">
+        <div class="col-sm-12 col-md-4">
+            <h1 class="display-6">Cadastrar Telefone</h1>
+            <input id="screen" type="hidden" value="phone">
+        </div>
+        <div id="alert" class="col-sm-12 col-md-8">
+        </div>
+    </div>
 <form id="formPhone" name="formPhone" class="col-sm-12 col-md-9 p-3" action="{{ route('phone.save') }}" method="POST">
     @csrf
 
@@ -10,6 +15,7 @@
         <div class="input-group mb-3">
             <input name="personName" id="personName" type="text" class="form-control" placeholder="Busque uma pessoa" aria-describedby="button-addon2" disabled>
             <input name="personId" id="personId" type="hidden" value="">
+            <input name="phoneId" id="phoneId" type="hidden" value="">
             <input name="update" id="update" type="hidden" value="">
             <button id="personModal"  class="btn btn-outline-secondary" type="button"  data-bs-toggle="modal" data-bs-target="#modalSearchPerson">Buscar Pessoa</button>
         </div>

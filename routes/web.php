@@ -19,7 +19,6 @@ Route::post('/pessoa/salvar', [PersonController::class, 'save'])->name('person.s
 Route::post('/pessoa/buscar', [PersonController::class, 'getPerson'])->name('person.getPerson');
 
 
-
 Route::post('/endereco/salvar', [AddressController::class, 'save'])->name('address.save');
 Route::post('/telefone/salvar', [PhoneController::class, 'save'])->name('phone.save');
 

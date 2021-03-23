@@ -10,14 +10,14 @@ $("#formPhone").submit(function (e)
     }).done(function (response) {
         if (response){
             console.log(response);
-            alert('Dados Salvos com sucesso!')
+            alertDiv('success','Telefone registrado com sucesso!',2000);
             $('#formPhone').each(function()
             {
                 this.reset();
             });
         }else{
             console.log(response);
-            alert('Falha ao gravar dados!')
+            alertDiv('success','ATENÇÃO: Ocorreu uma falha ao gravar os dados, contate o administrador do sistema.',5000);
         }
     });
 });
