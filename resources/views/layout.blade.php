@@ -8,7 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Agenda de Contatos</title>
 
-<!--  <link sizes="60x60" rel="shortcut icon" href="{{ asset('imgs/logo.png') }}" type="image/x-icon"/> -->
+    <link sizes="60x60" rel="shortcut icon" href="{{ asset('imgs/logo.png') }}" type="image/x-icon"/>
 
     <!-- CSS Bootstrap 5.0.0-beta2 -->
     <link rel="stylesheet" href="{{ asset('/libs/bootstrap-5.0.0-beta2/css/bootstrap.css') }}">
@@ -51,6 +51,7 @@
         }
         .personRow{
             cursor: pointer;
+
         }.personRow:hover{
             color: white;
             background-color: #5B5B5B;
@@ -81,7 +82,7 @@
 <body>
 
 <header class="col-12 text-center mt-3">
-<!--  <img id="banner" src="{{ asset('imgs/logo.png') }}" alt="K13 Agência Web"> -->
+    <img id="banner" src="{{ asset('imgs/logo.png') }}" alt="K13 Agência Web">
 </header>
 
 <div class="container-sm">
@@ -93,7 +94,7 @@
     </div>
 
     <div class="row">
-        <div id="content" class="col-12 p-4">
+        <div id="content" class="container col-12 p-3">
             @yield('content')
         </div>
     </div>

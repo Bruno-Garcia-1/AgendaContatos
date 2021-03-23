@@ -2,7 +2,6 @@ let personList = '';
 
 $("#cpf").focusout(function ()
 {
-
     $.ajax({
         url: $(this).attr("action"),
         type: 'POST',
@@ -64,22 +63,34 @@ $("#modalName").on('input',function ()
             $(this).focus();
         } else  {
             personList = response;
-
+            $("#gridPerson").text('')
             response.forEach((p) => {
                 console.log('ForEach response: ' + p.name);
 
-                $("#gridPerson").text
+                $("#gridPerson").append
                 (
-                    p.name + p.cpf
+                    "<p class='personRow' onclick='loadPersonRow(" + p.id + ")'>" +
+                        p.name +
+                    "</p>"
                 );
             })
         }
     });
 });
 
-$("table tbody").on("click", "td", function (e)
-{
-    console.log(this.getAttribute('personid'));
-    console.log(this.val());
-});
+
+function loadPersonRow(id){
+    console.log('function call ok! ' + id );
+    console.log(personList);
+
+    personList.forEach(function (p){
+        if (p.id === id)
+        {
+            $("#personName").val(p.name);
+            $("#personId").val(p.id);
+            $("#update").val(false);
+        }
+    });
+
+}
 

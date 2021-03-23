@@ -2,13 +2,14 @@
 @section('content')
     <h1 class="display-6">Cadastrar Endereço</h1>
 
-    <form id="formAddress" class="col-9 p-3" action="{{ route('address.save') }}" method="POST">
+    <form id="formAddress" name="formAddress" class="col-9 p-3" action="{{ route('address.save') }}" method="POST">
         @csrf
 
         <div class="row col-7">
             <div class="input-group mb-3">
                 <input name="personName" id="personName" type="text" class="form-control" placeholder="Busque uma pessoa" aria-describedby="button-addon2" disabled>
                 <input name="personId" id="personId" type="hidden" value="">
+                <input name="update" id="update" type="hidden" value="">
                 <button id="personModal"  class="btn btn-outline-secondary" type="button"  data-bs-toggle="modal" data-bs-target="#modalSearchPerson">Buscar Pessoa</button>
             </div>
         </div>

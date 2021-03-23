@@ -60,14 +60,7 @@ class PersonController extends Controller
 
     public function getPerson(Request $request)
     {
-        //if (count_chars($request->modalName) < 3) return false;
-
-
-
         $person = Person::where('name', 'LIKE',"%$request->modalName%")->get();
-
-
-        //dd(json_encode($person));
 
         return json_encode
         (

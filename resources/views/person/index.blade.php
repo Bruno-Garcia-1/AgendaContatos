@@ -1,7 +1,8 @@
 @extends('layout')
 @section('content')
-    <h1 class="display-6">Cadastrar Pessoa</h1>
-
+    <div class="row">
+        <h1 class="display-6">Cadastrar Pessoa</h1>
+    </div>
     <form id="formPerson" class="col-5 p-3" action="{{ route('person.save') }}" method="POST">
         @csrf
         <div class="mb-3">

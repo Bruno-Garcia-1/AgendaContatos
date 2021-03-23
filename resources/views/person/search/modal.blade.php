@@ -18,7 +18,7 @@
 
                 <div class="container">
                     <div class="row mb-3">
-                            <div id="gridPerson">
+                            <div id="gridPerson" data-bs-dismiss="modal">
                                 <!-- jquery -->
                             </div>
                     </div>
