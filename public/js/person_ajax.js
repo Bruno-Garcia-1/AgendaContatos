@@ -38,6 +38,10 @@ $("#formPerson").submit(function (e)
         if (response){
             console.log(response);
             alert('Dados Salvos com sucesso!')
+            $('#formPerson').each(function()
+            {
+                this.reset();
+            });
         }else{
             console.log(response);
             alert('Falha ao gravar dados!')
@@ -58,8 +62,8 @@ $("#modalName").on('input',function ()
         }
     }).done(function (response) {
         console.log(response);
-        if (!response){
-            $("#resModal").text('Nenhum resultado foi encontrato!');
+        if (response == null){
+            $("#gridPerson").text('Nenhum resultado foi encontrato!');
             $(this).focus();
         } else  {
             personList = response;
@@ -80,7 +84,7 @@ $("#modalName").on('input',function ()
 
 
 function loadPersonRow(id){
-    console.log('function call ok! ' + id );
+
     console.log(personList);
 
     personList.forEach(function (p){

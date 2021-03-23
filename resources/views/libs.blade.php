@@ -15,3 +15,4 @@
 <script src="{{ asset('/js/person_ajax.js') }}" type="text/javascript"></script>
 <script src="{{ asset('/js/address_ajax.js') }}" type="text/javascript"></script>
 <script src="{{ asset('/js/phone_ajax.js') }}" type="text/javascript"></script>
+<script src="{{ asset('/js/search_ajax.js') }}" type="text/javascript"></script>

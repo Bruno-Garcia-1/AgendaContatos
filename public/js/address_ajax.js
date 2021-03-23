@@ -28,6 +28,10 @@ $("#formAddress").submit(function (e) {
         if (response){
             console.log(response);
             alert('Dados Salvos com sucesso!')
+            $('#formAddress').each(function()
+            {
+                this.reset();
+            });
         }else{
             console.log(response);
             alert('Falha ao gravar dados!')

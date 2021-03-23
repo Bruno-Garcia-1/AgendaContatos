@@ -37,7 +37,7 @@
                  }
         #content{
             background-color: #FFFFFF;
-            height: 500px;
+            height: auto;
             border-radius: 30px;
         }
         footer{
@@ -58,22 +58,13 @@
             border-style: solid;
             border-color: #323131;
                  }
-        .color1{
-            background-color: #4f5050!important;
-        }
-        .color2{
-            background-color: #ffecb5!important;
-        }
-        .color3{
-            background-color: #cff4fc!important;
-        }
+
         @media screen and (max-width: 576px) {
             header{
                 height: 80px;
             }
             footer{
-                height: 100px;
-                font-size: 10px;
+                font-size: 15px;
             }
         }
     </style>
@@ -94,7 +85,7 @@
     </div>
 
     <div class="row">
-        <div id="content" class="container col-12 p-3">
+        <div id="content" class="container col-12 p-4">
             @yield('content')
         </div>
     </div>

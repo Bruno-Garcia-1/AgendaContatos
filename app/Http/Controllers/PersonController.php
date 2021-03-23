@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Person;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PersonController extends Controller
 {
@@ -21,10 +22,12 @@ class PersonController extends Controller
     {
         $cpf = (!$cpf) ? Request::capture('cpf')->cpf : $cpf;
 
+
+
         $cpf = preg_replace( '/[^0-9]/is', '', $cpf);
 
         if (strlen($cpf) != 11) {
-            return json_encode(false);
+            return json_encode('');
         }
 
         if (preg_match('/(\d)\1{10}/', $cpf)) {
@@ -45,10 +48,13 @@ class PersonController extends Controller
 
     public function save(Request $request)
     {
+        $cpf = json_decode(self::cpfCheck($request->cpf));
+
+
         $person = new Person;
 
         $person->name       = $request->name;
-        $person->cpf        = json_decode(self::cpfCheck($request->cpf));
+        $person->cpf        = $cpf;
         $person->email      = $request->email;
         $person->birthDate  = $request->birthDate;
 
@@ -60,7 +66,23 @@ class PersonController extends Controller
 
     public function getPerson(Request $request)
     {
-        $person = Person::where('name', 'LIKE',"%$request->modalName%")->get();
+        if (!$request->name) return false;
+
+        $name = preg_replace("/[^a-zA-Z0-9\s]/", "", $request->name);
+
+
+        $sql = "
+SELECT
+	p.name,    p.cpf,    p.email,    p.birthDate,
+    ad.zipCode,    ad.street,    ad.number,    ad.neighborhood,    ad.city,    ad.state,
+    ph.cellPhone,    ph.homePhone,    ph.commercialPhone
+FROM
+	persons AS p
+    LEFT JOIN addresses AS ad ON ad.person_id = p.id
+    LEFT JOIN phones AS ph ON ph.person_id = p.id
+WHERE
+    p.name LIKE '%$name%'";
+        $person = DB::select($sql);
 
         return json_encode
         (

@@ -11,7 +11,7 @@
 
                 <div class="row mb-3">
                     <div class="form-floating">
-                        <input name="modalName" id="modalName" action="{{ route('person.getPerson') }}" type="text" class="form-control"  placeholder="Nome" autocomplete="off">
+                        <input name="name" id="modalName" action="{{ route('person.getPerson') }}" type="text" class="form-control"  placeholder="Nome" autocomplete="off">
                         <label for="floatingInput">Nome</label>
                     </div>
                 </div>
