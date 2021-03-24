@@ -1,3 +1,28 @@
+$("#cellPhone").focusout(function ()
+{
+    let url = $(this).attr("action");
+    let data = $(this).serialize();
+    let div = $(this).attr("name");
+
+    phoneCheck(url, data, div);
+});
+$("#homePhone").focusout(function ()
+{
+    let url = $(this).attr("action");
+    let data = $(this).serialize();
+    let div = $(this).attr("name");
+
+    phoneCheck(url, data, div);
+});
+$("#commercialPhone").focusout(function ()
+{
+    let url = $(this).attr("action");
+    let data = $(this).serialize();
+    let div = $(this).attr("name");
+
+    phoneCheck(url, data, div);
+});
+
 $("#formPhone").submit(function (e)
 {
     e.preventDefault();
@@ -29,3 +54,31 @@ $("#formPhone").submit(function (e)
         }
     });
 });
+
+function phoneCheck(url, data, div)
+{
+    console.log('Ajax phone Check function');
+    console.log('vou para URL: ' + url);
+    console.log('Levando: ' + data);
+
+    return $.ajax({
+                url: url,
+                type: 'POST',
+                data: data,
+                dataType: 'json',
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            }).done(function (response) {
+                if (response === 'duplicated'){
+                    $("#"+div+'Help').removeClass('alert-success');
+                    $("#"+div+'Help').addClass('alert-warning');
+                    $("#"+div+'Help').text("Telefone já cadastrado!");
+                    $("#"+div).focus();
+                }else if(response === 'valid'){
+                    $("#"+div+'Help').removeClass('alert-warning');
+                    $("#"+div+'Help').addClass('alert-success');
+                    $("#"+div+'Help').text("Este telefone é novo!.");
+                }
+            });
+}

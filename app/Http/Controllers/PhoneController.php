@@ -7,7 +7,14 @@ use Illuminate\Http\Request;
 
 class PhoneController extends Controller
 {
+    private static function checkExistPhone($colum, $phone)
+    {
+        $exist = Phone::where($colum, $phone)->get();
 
+        if (isset($exist[0])) return true;
+
+        return false;
+    }
     public function index()
     {
         return view('phone.index');
@@ -35,5 +42,29 @@ class PhoneController extends Controller
         return json_encode(
             $phone->save()
         );
+    }
+
+    public function phoneCheck(Request $request)
+    {
+        if (isset($request->cellPhone)){
+            $phone = $request->cellPhone;
+
+        } elseif (isset($request->homePhone)){
+            $phone = $request->homePhone;
+
+        }elseif (isset($request->commercialPhone)){
+            $phone = $request->commercialPhone;
+
+        }else{
+            return false;
+        }
+
+        $phone = preg_replace( '/[^0-9]/is', '', $phone);
+
+        if(self::checkExistPhone('cellPhone',$phone) || self::checkExistPhone('homePhone',$phone) || self::checkExistPhone('commercialPhone',$phone))
+        {
+           return json_encode('duplicated');
+        }
+            return json_encode('valid');
     }
 }

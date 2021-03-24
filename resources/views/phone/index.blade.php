@@ -24,21 +24,24 @@
     <div class="row mb-3">
         <div class="col-md-3">
             <label for="cellPhone" class="form-label">Telefone Celular</label>
-            <input name="cellPhone" type="text" class="form-control cellPhone" id="cellPhone" placeholder="(00)0 0000-0000" required>
+            <input name="cellPhone" type="text" class="form-control cellPhone" action="{{ route('phone.phoneCheck') }}"  id="cellPhone" placeholder="(00)0 0000-0000" required>
+            <div id="cellPhoneHelp" class="col-12 form-text text-center rounded-pill"></div>
         </div>
     </div>
 
     <div class="row mb-3">
         <div class="col-md-3">
             <label for="homePhone" class="form-label">Telefone Residencial</label>
-            <input name="homePhone" type="text" class="form-control phone" id="homePhone" placeholder="(00)0000-0000">
+            <input name="homePhone" type="text" class="form-control phone" action="{{ route('phone.phoneCheck') }}" id="homePhone" placeholder="(00)0000-0000">
+            <div id="homePhoneHelp" class="col-12 form-text text-center rounded-pill"></div>
         </div>
     </div>
 
     <div class="row mb-3">
         <div class="col-md-3">
             <label for="commercialPhone" class="form-label">Telefone Comercial</label>
-            <input name="commercialPhone" type="text" class="form-control phone" id="commercialPhone" placeholder="(00)0000-0000">
+            <input name="commercialPhone" type="text" class="form-control phone" action="{{ route('phone.phoneCheck') }}" id="commercialPhone" placeholder="(00)0000-0000">
+            <div id="commercialPhoneHelp" class="col-12 form-text text-center rounded-pill"></div>
         </div>
     </div>
 

@@ -13,6 +13,15 @@ class PersonController extends Controller
         return $request;
     }
 
+    private static function checkExistPerson($cpf)
+    {
+        $exist = Person::where('cpf',$cpf)->get();
+
+        if (isset($exist[0])) return true;
+
+        return false;
+    }
+
     public function index()
     {
         return view('person.index');
@@ -23,20 +32,16 @@ class PersonController extends Controller
         return view('person.search.index');
     }
 
-    public function cpfCheck($cpf = null) //this function is reused in save()
+    public function cpfCheck(Request $request) //this function is reused in save()
     {
-        $cpf = (!$cpf) ? Request::capture('cpf')->cpf : $cpf;
-
-
-
-        $cpf = preg_replace( '/[^0-9]/is', '', $cpf);
+        $cpf = preg_replace( '/[^0-9]/is', '', $request->cpf);
 
         if (strlen($cpf) != 11) {
             return json_encode('');
         }
 
         if (preg_match('/(\d)\1{10}/', $cpf)) {
-            return json_encode(false);
+            return json_encode('invalid');
         }
 
         for ($t = 9; $t < 11; $t++) {
@@ -45,17 +50,25 @@ class PersonController extends Controller
             }
             $d = ((10 * $d) % 11) % 10;
             if ($cpf[$c] != $d) {
-                return json_encode(false);
+                return json_encode('invalid');
             }
         }
-        return json_encode($cpf);
+
+
+        if (self::checkExistPerson($cpf)) {
+            return json_encode('duplicated');
+        } else {
+            return json_encode('valid');
+        }
     }
 
     public function save(Request $request)
     {
-        $cpf = json_decode(self::cpfCheck($request->cpf));
+        $cpf = preg_replace( '/[^0-9]/is', '', $request->cpf);
 
-        $person = new Person;
+        if (self::checkExistPerson($cpf)) return json_encode('duplicated');
+
+            $person = new Person;
 
         $person->name       = $request->name;
         $person->cpf        = $cpf;

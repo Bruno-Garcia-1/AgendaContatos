@@ -22,9 +22,8 @@ Route::post('/pessoa/buscar', [PersonController::class, 'getPerson'])->name('per
 Route::post('/endereco/salvar', [AddressController::class, 'save'])->name('address.save');
 Route::post('/telefone/salvar', [PhoneController::class, 'save'])->name('phone.save');
 
+Route::post('/phone/phoneCheck', [PhoneController::class, 'phoneCheck'])->name('phone.phoneCheck');
 
-/* test route */
-Route::get('/test', [PersonController::class, 'getPerson']);
 
 
 

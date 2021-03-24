@@ -12,16 +12,33 @@ $("#cpf").focusout(function ()
         }
     }).done(function (response) {
         console.log(response);
-        if (!response){
-            $("#cpfHelp").removeClass('alert-success');
-            $("#cpfHelp").addClass('alert-danger');
-            $("#cpfHelp").text("CPF inválido!");
-            $("#cpf").focus();
-        } else  {
-            $("#cpfHelp").removeClass('alert-danger');
-            $("#cpfHelp").addClass('alert-success');
-            $("#cpfHelp").text("CPF válido!");
+
+        switch (response)
+        {
+            case 'invalid':
+                $("#cpfHelp").removeClass('alert-success');
+                $("#cpfHelp").removeClass('alert-warning');
+                $("#cpfHelp").addClass('alert-danger');
+                $("#cpfHelp").text("CPF inválido!");
+                $("#cpf").focus();
+                break;
+            case 'duplicated':
+                $("#cpfHelp").removeClass('alert-success');
+                $("#cpfHelp").removeClass('alert-danger');
+                $("#cpfHelp").addClass('alert-warning');
+                $("#cpfHelp").text("CPF já cadastrado!");
+                $("#cpf").focus();
+                break;
+            case 'valid':
+                $("#cpfHelp").removeClass('alert-danger');
+                $("#cpfHelp").removeClass('alert-warning');
+                $("#cpfHelp").addClass('alert-success');
+                $("#cpfHelp").text("CPF válido!");
+                break;
+            default:
+                return
         }
+
     });
 });
 $("#formPerson").submit(function (e)
@@ -34,12 +51,15 @@ $("#formPerson").submit(function (e)
         data: $(this).serialize(),
         dataType: 'json',
     }).done(function (response) {
-        if (response){
+        if (response === true){
             console.log(response);
             alertDiv('success','Pessoa registrada com sucesso!',2000);
+        } else if (response === 'duplicated'){
+            console.log(response);
+            alertDiv('danger','ATENÇÃO: O CPF já está cadastrado.',5000);
         }else{
             console.log(response);
-            alertDiv('success','ATENÇÃO: Ocorreu uma falha ao gravar os dados, contate o administrador do sistema.',5000);
+            alertDiv('danger','ATENÇÃO: Ocorreu erro ao salvar os dados, contate o administrador do sistema.',5000);
         }
     });
 });
