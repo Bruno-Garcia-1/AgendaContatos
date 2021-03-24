@@ -1,6 +1,10 @@
 @extends('layout')
 @section('content')
 
-<h3>Home Index</h3>
+<div class="container">
+    <div class="row">
+        <h1 class="display-4 text-center">Agenda de contatos</h1>
+    </div>
+</div>
 
 @endsection

@@ -16,9 +16,9 @@ class CreatePhonesTable extends Migration
         Schema::create('phones', function (Blueprint $table) {
             $table->id();
 
-            $table->string('cellPhone',15);
-            $table->string('homePhone',15)->nullable(true);
-            $table->string('commercialPhone',15)->nullable(true);
+            $table->string('cellPhone',15)->unique();
+            $table->string('homePhone',15)->nullable(true)->unique();
+            $table->string('commercialPhone',15)->nullable(true)->unique();
 
             $table->foreignId('person_id')->constrained('persons');
 
