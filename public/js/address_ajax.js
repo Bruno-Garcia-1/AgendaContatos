@@ -33,7 +33,6 @@ $("#formAddress").submit(function (e)
                 this.reset();
             });
         }else{
-            console.log(response);
             alertDiv('success','ATENÇÃO: Ocorreu uma falha ao gravar os dados, contate o administrador do sistema.',5000);
         }
 

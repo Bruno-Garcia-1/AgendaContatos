@@ -57,10 +57,6 @@ $("#formPhone").submit(function (e)
 
 function phoneCheck(url, data, div)
 {
-    console.log('Ajax phone Check function');
-    console.log('vou para URL: ' + url);
-    console.log('Levando: ' + data);
-
     return $.ajax({
                 url: url,
                 type: 'POST',

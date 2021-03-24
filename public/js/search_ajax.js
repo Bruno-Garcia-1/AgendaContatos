@@ -18,7 +18,6 @@ $("#inputSearch").on('input',function ()
             personList = response;
             $("#gridPerson").text('')
             response.forEach((p) => {
-                console.log('ForEach response: ' + p.name);
 
                 $("#gridPerson").append
                 (

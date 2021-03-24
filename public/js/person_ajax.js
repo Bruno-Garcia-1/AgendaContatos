@@ -52,13 +52,10 @@ $("#formPerson").submit(function (e)
         dataType: 'json',
     }).done(function (response) {
         if (response === true){
-            console.log(response);
             alertDiv('success','Pessoa registrada com sucesso!',2000);
         } else if (response === 'duplicated'){
-            console.log(response);
             alertDiv('danger','ATENÇÃO: O CPF já está cadastrado.',5000);
         }else{
-            console.log(response);
             alertDiv('danger','ATENÇÃO: Ocorreu erro ao salvar os dados, contate o administrador do sistema.',5000);
         }
     });
@@ -75,7 +72,6 @@ $("#modalName").on('input',function ()
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     }).done(function (response) {
-        console.log(response);
         if (response == null){
             $("#gridPerson").text('Nenhum resultado foi encontrato!');
             $(this).focus();
@@ -83,8 +79,6 @@ $("#modalName").on('input',function ()
             personList = response;
             $("#gridPerson").text('')
             response.forEach((p) => {
-                console.log('ForEach response: ' + p.name);
-
                 $("#gridPerson").append
                 (
                     '<div class="card col-sm-12 mb-1">\n' +
