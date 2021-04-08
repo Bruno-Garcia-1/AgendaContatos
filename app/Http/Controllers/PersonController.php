@@ -8,11 +8,6 @@ use Illuminate\Support\Facades\DB;
 
 class PersonController extends Controller
 {
-    private static function update(Request $request)
-    {
-        return $request;
-    }
-
     private static function checkExistPerson($cpf)
     {
         $exist = Person::where('cpf',$cpf)->get();
@@ -54,7 +49,6 @@ class PersonController extends Controller
             }
         }
 
-
         if (self::checkExistPerson($cpf)) {
             return json_encode('duplicated');
         } else {
@@ -78,7 +72,6 @@ class PersonController extends Controller
         return json_encode(
             $person->save()
         );
-
     }
 
     public function getPerson(Request $request)
